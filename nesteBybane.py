@@ -71,12 +71,12 @@ def parsePage(soup):
 		text += "Bybane: {} - {} ({})\n".format(bbt.getStart(), bbt.getEnd(), bbt.getTimeOfTravel())
 	text = text.rstrip()
 	print(text)
-	lcd.message("text")
 
 
 
 def main():
-	parsePage(soup)
-
+#	parsePage(soup)
+	lcd.clear()
+	lcd.message('Hello')
 if __name__ == '__main__':
 	main()
