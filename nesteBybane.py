@@ -71,6 +71,7 @@ def parsePage(soup):
 		text += "BB: {}-{}\n".format(bbt.getStart(), bbt.getEnd())
 	text = text.rstrip()
 	print(text)
+	lcd.clear()
 	lcd.message(text)
 
 
