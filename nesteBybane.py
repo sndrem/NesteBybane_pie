@@ -78,6 +78,7 @@ def parsePage(soup):
 
 def main():
 	lcd.message("Henter tider\nfor Bybanen")
+	time.sleep(5.0)
 	parsePage(soup)
 	
 if __name__ == '__main__':
