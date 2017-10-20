@@ -68,7 +68,7 @@ def parsePage(soup):
 
 	text = ""
 	for bbt in times:
-		text += "Bybane: {} - {} ({})\n".format(bbt.getStart(), bbt.getEnd(), bbt.getTimeOfTravel())
+		text += "BB: {}-{}({})\n".format(bbt.getStart(), bbt.getEnd(), bbt.getTimeOfTravel())
 	text = text.rstrip()
 	print(text)
 	lcd.message(text)
