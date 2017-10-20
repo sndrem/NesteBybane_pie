@@ -7,12 +7,12 @@ import datetime, time
 import Adafruit_CharLCD as LCD
 
 # Raspberry Pi pin configuration:
-lcd_rs        = 27  # Note this might need to be changed to 21 for older revision Pi's.
-lcd_en        = 22
-lcd_d4        = 25
-lcd_d5        = 24
-lcd_d6        = 23
-lcd_d7        = 18
+lcd_rs        = 25  # Note this might need to be changed to 21 for older revision Pi's.
+lcd_en        = 24
+lcd_d4        = 23
+lcd_d5        = 17
+lcd_d6        = 21
+lcd_d7        = 22
 lcd_backlight = 4
 
 # Define LCD column and row size for 16x2 LCD.
@@ -32,7 +32,7 @@ hour = now.hour
 minute = now.minute
 SKYSS_URL = "https://reiseplanlegger.skyss.no/scripts/TravelMagic/TravelMagicWE.dll/svar?from=Brann%20stadion,%20bybanestopp%20%28Bergen%29&to=Byparken,%20bybanestopp%20%28Bergen%29&direction=1&lang=nn&instant=1&date=" + str(day) + "." + str(month) + "." + str(year) + "&time=" + str(hour) + ":" + str(minute)
 
-# Bruk requests til å hente driftsmeldinger fra Skyss
+# Bruk requests til å hente bybanetider
 page = req.get(SKYSS_URL)
 
 # Gjør kildekoden om til et bs4-objekt
