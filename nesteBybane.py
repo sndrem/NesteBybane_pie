@@ -75,8 +75,8 @@ def parsePage(soup):
 
 
 def main():
-#	parsePage(soup)
 	lcd.clear()
-	lcd.message('Hello')
+	parsePage(soup)
+	
 if __name__ == '__main__':
 	main()
