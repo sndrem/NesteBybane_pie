@@ -92,7 +92,7 @@ def main():
 		lcd.message("Henter tider\nfor Bybanen")
 		time.sleep(5.0)
 		parsePage(soup, byparken)
-		byparken != byparken
+		byparken = not byparken
 		time.sleep(25)
 	
 if __name__ == '__main__':
