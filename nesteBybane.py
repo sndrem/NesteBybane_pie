@@ -30,13 +30,9 @@ month = now.month
 day = now.day
 hour = now.hour
 minute = now.minute
-SKYSS_URL = "https://reiseplanlegger.skyss.no/scripts/TravelMagic/TravelMagicWE.dll/svar?from=Brann%20stadion,%20bybanestopp%20%28Bergen%29&to=Byparken,%20bybanestopp%20%28Bergen%29&direction=1&lang=nn&instant=1&date=" + str(day) + "." + str(month) + "." + str(year) + "&time=" + str(hour) + ":" + str(minute)
-
-# Bruk requests til å hente bybanetider
-page = req.get(SKYSS_URL)
-
-# Gjør kildekoden om til et bs4-objekt
-soup = BeautifulSoup(page.text, 'html.parser')
+SKYSS_URL_BYPARK = "https://reiseplanlegger.skyss.no/scripts/TravelMagic/TravelMagicWE.dll/svar?from=Brann%20stadion,%20bybanestopp%20%28Bergen%29&to=Byparken,%20bybanestopp%20%28Bergen%29&direction=1&lang=nn&instant=1&date=" + str(day) + "." + str(month) + "." + str(year) + "&time=" + str(hour) + ":" + str(minute)
+SKYSS_URL_FLESLAND = "https://reiseplanlegger.skyss.no/scripts/TravelMagic/TravelMagicWE.dll/svar?from=Brann%20stadion,%20bybanestopp%20%28Bergen%29&to=Flesland%20%28Bergen%29&direction=1&lang=nn&instant=1&date="+ str(day) + "." + str(month) + "." + str(year) + "&time=" + str(hour) + ":" + str(minute)
+SKYSS_URLS = [SKYSS_URL_BYPARK, SKYSS_URL_FLESLAND]
 
 class BybaneTime():
 
@@ -55,7 +51,7 @@ class BybaneTime():
 		return self.timeOfTravel
 
 
-def parsePage(soup):
+def parsePage(soup, byparken):
 	nextTwo = soup.select(".maincontent .tm-block-b")[:2]
 	times = []
 	for span in nextTwo:
@@ -66,9 +62,18 @@ def parsePage(soup):
 		bybaneTime = BybaneTime(start, end, travelTime)
 		times.append(bybaneTime)
 
+	showMessage(times, byparken)
+	
+
+def showMessage(times, byparken):
 	text = ""
+	toText = ""
+	if(byparken):
+		toText = "BP"
+	else:
+		toText = "FL"
 	for bbt in times:
-		text += "BB: {}-{}\n".format(bbt.getStart(), bbt.getEnd())
+		text += "{}: {}-{}\n".format(toText, bbt.getStart(), bbt.getEnd())
 	text = text.rstrip()
 	print(text)
 	lcd.clear()
@@ -77,9 +82,18 @@ def parsePage(soup):
 
 
 def main():
-	lcd.message("Henter tider\nfor Bybanen")
-	time.sleep(5.0)
-	parsePage(soup)
+	byparken = True
+	for url in SKYSS_URLS:
+		# Bruk requests til å hente bybanetider
+		page = req.get(url)
+		# Gjør kildekoden om til et bs4-objekt
+		soup = BeautifulSoup(page.text, 'html.parser')
+
+		lcd.message("Henter tider\nfor Bybanen")
+		time.sleep(5.0)
+		parsePage(soup)
+		byParken != byParken
+		time.sleep(25)
 	
 if __name__ == '__main__':
 	main()
