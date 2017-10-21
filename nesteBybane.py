@@ -91,7 +91,7 @@ def main():
 
 		lcd.message("Henter tider\nfor Bybanen")
 		time.sleep(5.0)
-		parsePage(soup)
+		parsePage(soup, byparken)
 		byParken != byParken
 		time.sleep(25)
 	
