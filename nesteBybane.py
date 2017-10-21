@@ -32,7 +32,7 @@ hour = now.hour
 minute = now.minute
 SKYSS_URL_BYPARK = "https://reiseplanlegger.skyss.no/scripts/TravelMagic/TravelMagicWE.dll/svar?from=Brann%20stadion,%20bybanestopp%20%28Bergen%29&to=Byparken,%20bybanestopp%20%28Bergen%29&direction=1&lang=nn&instant=1&date=" + str(day) + "." + str(month) + "." + str(year) + "&time=" + str(hour) + ":" + str(minute)
 SKYSS_URL_FLESLAND = "https://www.skyss.no/Rutetider-og-kart1/Reiseplanleggar/?from=Brann+stadion%2C+bybanestopp+%28Bergen%29&to=Flesland+%28Bergen%29&direction=1&date=" + str(day) + "." + str(month) + "." + str(year) + "&time=" + str(hour) + ":" + str(minute)
-SKYSS_URLS = [SKYSS_URL_BYPARK, SKYSS_URL_FLESLAND]
+SKYSS_URLS = [SKYSS_URL_BYPARK, SKYSS_URL_FLESLAND, SKYSS_URL_BYPARK]
 
 class BybaneTime():
 
@@ -90,7 +90,7 @@ def main():
 		soup = BeautifulSoup(page.text, 'html.parser')
 		lcd.clear()
 		lcd.message("Henter tider\nfor Bybanen")
-		time.sleep(5.0)
+		time.sleep(2.0)
 		parsePage(soup, byparken)
 		byparken = not byparken
 		time.sleep(25)
