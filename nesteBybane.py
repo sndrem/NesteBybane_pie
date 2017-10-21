@@ -89,11 +89,11 @@ def main():
 		page = req.get(url)
 		# Gjør kildekoden om til et bs4-objekt
 		soup = BeautifulSoup(page.text, 'html.parser')
-
+		lcd.clear()
 		lcd.message("Henter tider\nfor Bybanen")
 		time.sleep(5.0)
 		parsePage(soup, byparken)
-		byparken = !byparken
+		byparken = not byparken
 		time.sleep(25)
 	
 if __name__ == '__main__':
